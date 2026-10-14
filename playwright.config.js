@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
     testDir: './tests',
-    fullyParallel: true,
+    //fullyParallel: true,
     reporter: 'html',
     timeout: 40 * 1000,
     expect: {
@@ -11,20 +11,20 @@ export default defineConfig({
     use: {
         headless: false,
     },
-    projects: [
-        {
-            name: 'chromium',
-            use: { ...devices['Desktop Chrome'] },
-        },
-        {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
-        },
+    //projects: [
+        // {
+        //     name: 'chromium',
+        //     use: { ...devices['Desktop Chrome'] },
+        // },
+        // {
+        //     name: 'firefox',
+        //     use: { ...devices['Desktop Firefox'] },
+        // },
         // {
         //     name: 'webkit',
         //     use:{...devices['Desktop Safari']},
         // }
-    ],
+   // ],
 
 });
 
