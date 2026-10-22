@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-import { only } from 'node:test';
+
  test('page handling',async({page})=>{
 await page.goto("https://testautomationpractice.blogspot.com/p/playwrightpractice.html");
 await expect(page).toHaveURL("https://testautomationpractice.blogspot.com/p/playwrightpractice.html");

@@ -11,29 +11,18 @@ export default defineConfig({
         headless: false,
     },
     projects: [
-       
+   
     // {
-    //    name: 'Firefox iPhone',
-    //   use: {
-    //     ...devices['iPhone 13'],
-    //     browserName: 'firefox',
-    //         viewport: {
-    //             width: 500, height: 407
-    //         },
-
-    //     }},
-
+    //     name: 'Mobile Safari',
+    //     use:{...devices['iPhone 13'],
+    //     }
+    // },
     {
-        name: 'Mobile Safari',
-        use:{...devices['iPhone 13'],
-        }
-    },
-    // {
-    //   name: 'chromium',
-    //   use: {
-    //     ...devices['Desktop Chrome'],
-    //     browserName: 'chromium',
-    //   }},
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        browserName: 'chromium',
+      }},
         // {
         // name: 'firefox',
         // use: {
