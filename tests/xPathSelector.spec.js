@@ -18,7 +18,6 @@ await page.locator("//div/descendant::div[text()='Dehradun Airport']").click();
 await page.locator("//input[@placeholder='Enter destination']").fill("chen");
 await page.locator("//div/descendant::div[text()='Chennai International Airport']").click();
 
-
 await page.locator('select[name="passengers"]').selectOption({index:3});
 
 await page.locator("//button[@type='submit']").click();
