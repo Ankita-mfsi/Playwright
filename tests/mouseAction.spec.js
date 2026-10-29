@@ -23,10 +23,22 @@ test.only("Testing Drag and drop",async({page})=>{
 await page.goto("https://testpages.eviltester.com/pages/interaction/");
 await page.locator(".entry p a[href*='drag-drop']").click();
 
-await page.locator("#draggable1").dragTo(page.locator("#droppable1"));
+let source=page.locator("#draggable1");
+let target=page.locator("#droppable1")
+
+await source.dragTo(target);
 await expect(page.locator("#droppable1 p")).toHaveText("Dropped!");
 
-await page.locator("#draggable2").dragTo(page.locator("#droppable2"));
+//Other way to do and added variable for better readability
+let box=page.locator("#draggable2");
+let drop=page.locator("#droppable2")
+
+await box.hover();
+await page.mouse.down();
+await drop.hover();
+await page.mouse.up();
+
 await expect(page.locator("#droppable2 p")).toHaveText("Dropped!");
 
-})
+
+});
