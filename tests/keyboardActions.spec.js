@@ -27,10 +27,11 @@ test.only("Check keyboard actions", async ({ page }) => {
     
     await page.goto('https://www.amazon.in/');
 
-await page.locator('#twotabsearchtextbox').click();
-await page.keyboard.down('Shift');
-await page.keyboard.press('a');
-await page.keyboard.up('Shift');
+let box= page.locator('#twotabsearchtextbox');
+await box.click();
+await box.pressSequentially('laptop');
+await page.keyboard.press('Shift+a');
+
 
 console.log(await page.locator('#twotabsearchtextbox').inputValue());
     //to recheck
