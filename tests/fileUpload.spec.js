@@ -20,6 +20,6 @@ test.only('Multiple file upload', async ({ page }) => {
     const expectedFiles = ['text file.txt', '4md_PNG.png'];
     await expect(page.locator('#multi-preview .name')).toHaveText(expectedFiles);
     
-    await page.waitForTimeout(5000);
+    
 
 })

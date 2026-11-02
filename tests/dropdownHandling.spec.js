@@ -45,7 +45,7 @@ test('multi select', async ({ page }) => {
 
 })
 
-test.only('Cascading Dropdowns', async ({ page }) => {
+test('Cascading Dropdowns', async ({ page }) => {
     await page.goto('https://playwrightlab.github.io/index.html');
 
     let continent = page.getByTestId('cascade-continent');
@@ -67,5 +67,17 @@ test.only('Cascading Dropdowns', async ({ page }) => {
 
     await city.selectOption('london');
     await expect(city).toHaveValue('london');
+})
+
+test.only('Bootstrap',async({page})=>{
+    await page.goto("https://www.playwrightautomation.com/practice.html");
+    
+    let dropdown=page.locator("span[class*='select-care']");
+
+    await dropdown.scrollIntoViewIfNeeded();
+    await dropdown.click();
+   
+    await page.locator("ul[id*='job-title'] li").first();
+
 })
 
