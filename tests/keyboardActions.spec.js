@@ -9,20 +9,20 @@ test.skip("Keywboard actions", async ({ page }) => {
     //Check with apply wait
 })
 test.only("Check keyboard actions", async ({ page }) => {
-    // await page.goto("https://the-internet.herokuapp.com/key_presses");
+    await page.goto("https://the-internet.herokuapp.com/key_presses");
 
-    // await page.locator("#target").click();
+    await page.locator("#target").click();
 
-    // await page.keyboard.type("ankita");
+    await page.keyboard.type("ankita");
 
-    // await page.keyboard.press("Control+A");
-    // await page.keyboard.press("Control+C");
-    // await page.keyboard.press("ArrowRight");
-    // await page.keyboard.press("Space");
-    // await page.keyboard.press("Control+V");
+    await page.keyboard.press("Control+A");
+    await page.keyboard.press("Control+C");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Space");
+    await page.keyboard.press("Control+V");
 
-    // // Type uppercase A by pressing Shift + a
-    // await page.keyboard.press("Shift+a");
+    // Type uppercase A by pressing Shift + a
+    await page.keyboard.press("Shift+a");
 
     
     await page.goto('https://www.amazon.in/');
@@ -34,7 +34,7 @@ await page.keyboard.press('Shift+a');
 
 
 console.log(await page.locator('#twotabsearchtextbox').inputValue());
-    //to recheck
+   
 
 
 })

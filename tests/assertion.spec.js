@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { log } from 'node:console';
 
 test('Page assertions', async ({ page }) => {
     await page.goto("https://www.flipkart.com/");
@@ -56,5 +55,6 @@ test.only('Attribute assertion', async ({ page }) => {
     await expect(item).toHaveAttribute("alt","Sauce Labs Backpack");
 
     await expect(page.locator('.inventory_item_description')).toHaveCount(6);
+    // left disable tohaveSS
 
 })

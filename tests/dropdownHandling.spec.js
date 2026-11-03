@@ -79,5 +79,7 @@ test.only('Bootstrap',async({page})=>{
    
     await page.locator("ul[id*='job-title'] li").first();
 
+    //add assertion
+
 })
 
