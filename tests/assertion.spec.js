@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import './custom-expect.js';
 
 test('Page assertions', async ({ page }) => {
     await page.goto("https://www.flipkart.com/");
@@ -38,12 +39,12 @@ test('Locator assertions more ', async ({ page }) => {
     await expect(errorMessage).toBeHidden();
 })
 
-test.only('Attribute assertion', async ({ page }) => {
+test('Attribute assertion', async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
     await expect(page).toHaveTitle("Swag Labs");
 
-    let username=page.locator("[placeholder='Username']");
-    let login=page.locator("#login-button");
+    let username = page.locator("[placeholder='Username']");
+    let login = page.locator("#login-button");
     await expect(username).toHaveId('user-name');
     await expect(login).toHaveClass("submit-button btn_action");
 
@@ -51,10 +52,50 @@ test.only('Attribute assertion', async ({ page }) => {
     await page.locator('#password').fill("secret_sauce");
     await login.click();
 
-    let item=page.getByAltText('Sauce Labs Backpack');
-    await expect(item).toHaveAttribute("alt","Sauce Labs Backpack");
-
+    let item = page.getByAltText('Sauce Labs Backpack');
+    await expect(item).toHaveAttribute("alt", "Sauce Labs Backpack");
     await expect(page.locator('.inventory_item_description')).toHaveCount(6);
-    // left disable tohaveSS
 
+    let addTocart = page.locator("[id*='cart-sauce-labs-backpack']");
+    await addTocart.click();
+
+    //--update-snapshots to update the SS
+    let cart = page.locator("[class*='cart_link']");
+    await expect(cart).toHaveScreenshot("cart.png");
+    await expect(cart).toBeEnabled();
+})
+
+test('Soft assertion ', async ({ page }) => {
+    await page.goto("https://www.saucedemo.com/");
+    await expect.soft(page).not.toHaveTitle("Swag Labs");
+
+    let password = await page.locator(".login_password").textContent();
+    console.log(password);
+})
+
+async function customAssert(actual, expected) {
+    expect(actual).toBe(expected);
+}
+test('custom assertion', async ({ page }) => {
+    await page.goto("https://www.saucedemo.com/");
+    await customAssert(await page.title(), 'Swag Labs');
+})
+
+test.only('custom assertion1', async ({ page }) => {
+    await page.goto("https://www.saucedemo.com/");
+    await customAssert(await page.title(), 'Swag Labs');
+
+    let username = page.locator("[placeholder='Username']");
+    let login = page.locator("#login-button");
+    await expect(username).toHaveId('user-name');
+    await expect(login).toHaveClass("submit-button btn_action");
+
+    await username.fill("standard_user");
+    await page.locator('#password').fill("secret_sauce");
+
+    await login.click();
+
+    let countImage = await page.locator("//button[text()='Add to cart']").count();
+    console.log(countImage);
+    await expect(40).toBeGreaterThan(countImage);
 })
